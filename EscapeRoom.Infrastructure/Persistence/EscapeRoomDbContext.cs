@@ -9,12 +9,12 @@ namespace EscapeRoom.Infrastructure.Persistence
 {
     public class EscapeRoomDbContext : DbContext
     {
-        public DbSet<Domain.Entities.EscapeRoom> EscapeRooms { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=EscapeRoomDb;Trusted_Connection=True");
+        public EscapeRoomDbContext(DbContextOptions<EscapeRoomDbContext> options) : base(options) 
+        { 
+        
         }
+
+        public DbSet<Domain.Entities.EscapeRoom> EscapeRooms { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

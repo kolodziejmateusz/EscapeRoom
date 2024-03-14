@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EscapeRoom.Infrastructure.Migrations
 {
     [DbContext(typeof(EscapeRoomDbContext))]
-    [Migration("20240314130116_init")]
+    [Migration("20240314141420_init")]
     partial class init
     {
         /// <inheritdoc />

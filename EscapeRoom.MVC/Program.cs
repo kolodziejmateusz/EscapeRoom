@@ -1,3 +1,7 @@
+using EscapeRoom.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
+using EscapeRoom.Infrastructure.Extensions;
+
 namespace EscapeRoom.MVC
 {
     public class Program
@@ -8,6 +12,10 @@ namespace EscapeRoom.MVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            
+            
+
+            builder.Services.AddInfrastructure(builder.Configuration);
 
             var app = builder.Build();
 
