@@ -2,6 +2,7 @@ using EscapeRoom.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using EscapeRoom.Infrastructure.Extensions;
 using EscapeRoom.Infrastructure.Seeders;
+using EscapeRoom.Application.Extensions;
 
 namespace EscapeRoom.MVC
 {
@@ -15,6 +16,7 @@ namespace EscapeRoom.MVC
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddInfrastructure(builder.Configuration);
+            builder.Services.AddApplication();
 
             var app = builder.Build();
 

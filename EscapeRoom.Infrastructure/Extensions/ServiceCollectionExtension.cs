@@ -1,4 +1,6 @@
-﻿using EscapeRoom.Infrastructure.Persistence;
+﻿using EscapeRoom.Domain.Interfaces;
+using EscapeRoom.Infrastructure.Persistence;
+using EscapeRoom.Infrastructure.Repositories;
 using EscapeRoom.Infrastructure.Seeders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -19,6 +21,7 @@ namespace EscapeRoom.Infrastructure.Extensions
                 configuration.GetConnectionString("EscapeRoom")));
 
             services.AddScoped<EscapeRoomSeeder>();
+            services.AddScoped<IEscapeRoomRepository, EscapeRoomRepository>();
         }
     }
 }
