@@ -11,6 +11,13 @@ namespace EscapeRoom.MVC.Controllers
         {
             _escapeRoomService = escapeRoomService;
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(Domain.Entities.EscapeRoom escapeRoom)
         {
