@@ -1,4 +1,6 @@
-﻿using EscapeRoom.Domain.Interfaces;
+﻿using AutoMapper;
+using EscapeRoom.Application.EscapeRoom;
+using EscapeRoom.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +12,16 @@ namespace EscapeRoom.Application.Services
     public class EscapeRoomService : IEscapeRoomService
     {
         private readonly IEscapeRoomRepository _escapeRoomRepository;
+        private IMapper _mapper;
 
-        public EscapeRoomService(IEscapeRoomRepository escapeRoomRepository)
+        public EscapeRoomService(IEscapeRoomRepository escapeRoomRepository, IMapper mapper)
         {
             _escapeRoomRepository = escapeRoomRepository;
+            _mapper = mapper;
         }
-        public async Task Create(Domain.Entities.EscapeRoom escapeRoom)
+        public async Task Create(EscapeRoomDto escapeRoomDto)
         {
+            var escapeRoom = _mapper.Map<Domain.Entities.EscapeRoom>(escapeRoomDto);
             escapeRoom.EncodeName();
             await _escapeRoomRepository.Create(escapeRoom);
         }

@@ -1,4 +1,5 @@
-﻿using EscapeRoom.Application.Services;
+﻿using EscapeRoom.Application.EscapeRoom;
+using EscapeRoom.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EscapeRoom.MVC.Controllers
@@ -19,9 +20,9 @@ namespace EscapeRoom.MVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Domain.Entities.EscapeRoom escapeRoom)
+        public async Task<IActionResult> Create(EscapeRoomDto escapeRoomDto)
         {
-            await _escapeRoomService.Create(escapeRoom);
+            await _escapeRoomService.Create(escapeRoomDto);
             return RedirectToAction(nameof(Create)); //TODO
         }
     }

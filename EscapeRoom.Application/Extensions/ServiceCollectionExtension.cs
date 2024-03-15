@@ -1,4 +1,5 @@
-﻿using EscapeRoom.Application.Services;
+﻿using EscapeRoom.Application.Mappings;
+using EscapeRoom.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,9 @@ namespace EscapeRoom.Application.Extensions
     {
         public static void AddApplication(this IServiceCollection services)
         {
-           services.AddScoped<IEscapeRoomService, EscapeRoomService>();
+            services.AddScoped<IEscapeRoomService, EscapeRoomService>();
+
+            services.AddAutoMapper(typeof(EscapeRoomMappingProfile));
         }
     }
 }

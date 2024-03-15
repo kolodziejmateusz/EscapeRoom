@@ -1,7 +1,9 @@
-﻿namespace EscapeRoom.Application.Services
+﻿using EscapeRoom.Application.EscapeRoom;
+
+namespace EscapeRoom.Application.Services
 {
     public interface IEscapeRoomService
     {
-        Task Create(Domain.Entities.EscapeRoom escapeRoom);
+        Task Create(EscapeRoomDto escapeRoomDto);
     }
 }
