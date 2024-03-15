@@ -22,6 +22,10 @@ namespace EscapeRoom.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(EscapeRoomDto escapeRoomDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(escapeRoomDto);
+            }
             await _escapeRoomService.Create(escapeRoomDto);
             return RedirectToAction(nameof(Create)); //TODO
         }
