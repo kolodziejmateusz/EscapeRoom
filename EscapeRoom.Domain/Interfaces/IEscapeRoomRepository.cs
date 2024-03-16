@@ -9,5 +9,6 @@ namespace EscapeRoom.Domain.Interfaces
     public interface IEscapeRoomRepository
     {
         Task Create(Domain.Entities.EscapeRoom escapeRoom);
+        Task<Domain.Entities.EscapeRoom?> GetByName(string name);
     }
 }

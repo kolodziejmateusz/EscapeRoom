@@ -1,5 +1,6 @@
 ﻿using EscapeRoom.Domain.Interfaces;
 using EscapeRoom.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,8 @@ namespace EscapeRoom.Infrastructure.Repositories
             _dbContext.Add(escapeRoom);
             await _dbContext.SaveChangesAsync();
         }
+
+        public Task<Domain.Entities.EscapeRoom?> GetByName(string name)
+        => _dbContext.EscapeRooms.FirstOrDefaultAsync(cw => cw.Name.ToLower() == name.ToLower());
     }
 }

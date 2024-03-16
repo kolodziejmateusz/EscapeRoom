@@ -1,5 +1,8 @@
-﻿using EscapeRoom.Application.Mappings;
+﻿using EscapeRoom.Application.EscapeRoom;
+using EscapeRoom.Application.Mappings;
 using EscapeRoom.Application.Services;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -16,6 +19,10 @@ namespace EscapeRoom.Application.Extensions
             services.AddScoped<IEscapeRoomService, EscapeRoomService>();
 
             services.AddAutoMapper(typeof(EscapeRoomMappingProfile));
+
+            services.AddValidatorsFromAssemblyContaining<EscapeRoomDtoValidator>()
+                .AddFluentValidationAutoValidation()
+                .AddFluentValidationClientsideAdapters();
         }
     }
 }
