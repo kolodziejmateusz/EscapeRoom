@@ -10,11 +10,14 @@
     <a asp-action="Create" class="btn btn-secondary">Utwórz nowy Escape Room</a>
 </p>
 
-<div class="row" >
+<div class="row">
     @foreach (var item in Model)
     {
+        var randomNumber = new Random().Next(1, 14);
+        string path = "/content/images/image" + randomNumber + ".jpg";
+
         <div class="card" style="width: 19rem; border-color: black; margin: 10px;">
-            <img src="/content/images/image2.jpg" class="card-img-top" alt="cos">
+            <img src="@path" class="card-img-top" alt="@path">
             <div class="card-body">
                 <h5 class="card-title">@item.Name</h5>
                 <h6 class="card-subtitle mb-2 text-muted">@item.PhoneNumber</h6>
