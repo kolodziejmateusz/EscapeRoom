@@ -21,6 +21,12 @@ namespace EscapeRoom.Application.Mappings
                     City = src.City,
                     PostalCode = src.PostalCode
                 }));
+
+            CreateMap<Domain.Entities.EscapeRoom, EscapeRoomDto>()
+                .ForMember(dto => dto.PhoneNumber, opt => opt.MapFrom(src => src.AddressDetails.PhoneNumber))
+                .ForMember(dto => dto.Street, opt => opt.MapFrom(src => src.AddressDetails.Street))
+                .ForMember(dto => dto.City, opt => opt.MapFrom(src => src.AddressDetails.City))
+                .ForMember(dto => dto.PostalCode, opt => opt.MapFrom(src => src.AddressDetails.PostalCode));
         }
     }
 }

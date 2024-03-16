@@ -13,6 +13,12 @@ namespace EscapeRoom.MVC.Controllers
             _escapeRoomService = escapeRoomService;
         }
 
+        public async Task<IActionResult> Index()
+        {
+            var escapeRoom = await _escapeRoomService.GetAll();
+            return View(escapeRoom);
+        }
+
         [HttpGet]
         public IActionResult Create()
         {
@@ -27,7 +33,7 @@ namespace EscapeRoom.MVC.Controllers
                 return View(escapeRoomDto);
             }
             await _escapeRoomService.Create(escapeRoomDto);
-            return RedirectToAction(nameof(Create)); //TODO
+            return RedirectToAction(nameof(Index)); //TODO
         }
     }
 }

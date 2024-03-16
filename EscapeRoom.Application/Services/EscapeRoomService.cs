@@ -25,5 +25,12 @@ namespace EscapeRoom.Application.Services
             escapeRoom.EncodeName();
             await _escapeRoomRepository.Create(escapeRoom);
         }
+
+        public async Task<IEnumerable<EscapeRoomDto>> GetAll()
+        {
+            var escapeRooms = await _escapeRoomRepository.GetAll();
+            var dtos = _mapper.Map<IEnumerable<EscapeRoomDto>>(escapeRooms);
+            return dtos;
+        }
     }
 }
