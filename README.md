@@ -6,7 +6,7 @@
 
 Na początku chciałbym podkreślić, że projekt jest cały czas w fazie rozwoju i mam nadzieję z czasem dodawać tu nowe fukcje :D.
 
-Aplikacja służy do ogłaszania ofert firm zajmujących się prowadzeniem Escape Roomów. Użytkownik za jej pomocą może dodawać i przeglądać ofertę Escape Roomów w swojej okolicy.
+Aplikacja służy do ogłaszania ofert firm zajmujących się prowadzeniem Escape Roomów. Użytkownik za jej pomocą może dodawać, edytować, wyświetlać szczegóły i przeglądać ofertę Escape Roomów w swojej okolicy.
 
 ## 1. Widok główny na którym można przeglądać aktualne oferty:
 ![gif](./.github/images/gif1.gif)
