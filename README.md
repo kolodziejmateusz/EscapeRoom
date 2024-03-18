@@ -1,6 +1,7 @@
 # Escape Room
 ### Miło mi Cię widzieć na stronie projektu mojej aplikacji webowej w ASP.NET MVC (model-view-controller).
 
+# [DEMO - kliknij aby przetestować aplikacje.](https://krzaczobrwisty.bsite.net/)
 
 
 Na początku chciałbym podkreślić, że projekt jest cały czas w fazie rozwoju i mam nadzieję z czasem dodawać tu nowe fukcje :D.
