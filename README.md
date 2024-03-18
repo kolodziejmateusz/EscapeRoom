@@ -24,11 +24,11 @@ Aplikacja służy do ogłaszania ofert firm zajmujących się prowadzeniem Escap
 
 
 W Projekcie użyłem między innymi:
--ASP.NET Core MVC
--Entity FrameWork
--baze danych ms sql
--clean architecture
--CQRS i MediatR
--automapper
+* ASP.NET Core MVC
+* Entity FrameWork
+* baze danych ms sql
+* clean architecture
+* CQRS i MediatR
+* automapper
 
 Aplikacja realizowana z pomocą kursu i podczas kursu.
