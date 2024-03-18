@@ -11,5 +11,6 @@ namespace EscapeRoom.Domain.Interfaces
         Task Create(Domain.Entities.EscapeRoom escapeRoom);
         Task<Domain.Entities.EscapeRoom?> GetByName(string name);
         Task<IEnumerable<Domain.Entities.EscapeRoom>> GetAll();
+        Task<Domain.Entities.EscapeRoom> GetByEncodedName(string encodedName);
     }
 }

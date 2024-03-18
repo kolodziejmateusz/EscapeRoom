@@ -11,14 +11,14 @@ namespace EscapeRoom.Domain.Entities
         public int Id { get; set; }
         public string Name { get; set; } = default!;
         public string? Description { get; set; }
-        public DateTime CratedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CratedAt { get; set; } = DateTime.Now;
         public EscapeRoomAddressDetails AddressDetails { get; set; } = default!;
 
         public string EncodedName { get; private set; } = default!;
 
         public void EncodeName()
         {
-            EncodedName = Name.ToLower().Replace(" ", "-");
+            EncodedName = Name.Trim().ToLower().Replace(" ", "-");
         }
     }
 }

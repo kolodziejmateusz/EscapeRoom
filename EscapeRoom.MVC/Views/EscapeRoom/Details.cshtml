@@ -1,0 +1,56 @@
+﻿@model EscapeRoom.Application.EscapeRoom.EscapeRoomDto
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Model.Name</h1>
+
+<div>
+    <h4>EscapeRoom
+        @{
+            var randomNumber = new Random().Next(1, 14);
+            string path = "/content/images/image" + randomNumber + ".jpg";
+        } 
+    </h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Street)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Street)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PostalCode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PostalCode)
+        </dd>
+    </dl>
+</div>
+<div style="width: 33.33%;">
+    <img src="@path" class="card-img-top" alt="@path" style="border-radius: 10px;">
+</div>
+<div style="margin-top: 10px;">
+    <a asp-action="Edit" class="btn btn-primary">Edytuj</a>
+    <a asp-action="Index" class="btn btn-primary">Wróć do listy</a>
+</div>

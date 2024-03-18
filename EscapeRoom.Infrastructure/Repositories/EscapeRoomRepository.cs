@@ -27,6 +27,9 @@ namespace EscapeRoom.Infrastructure.Repositories
         public async Task<IEnumerable<Domain.Entities.EscapeRoom>> GetAll()
         => await _dbContext.EscapeRooms.ToListAsync();
 
+        public async Task<Domain.Entities.EscapeRoom> GetByEncodedName(string encodedName)
+        => await _dbContext.EscapeRooms.FirstAsync(c => c.EncodedName == encodedName);
+
         public Task<Domain.Entities.EscapeRoom?> GetByName(string name)
         => _dbContext.EscapeRooms.FirstOrDefaultAsync(cw => cw.Name.ToLower() == name.ToLower());
     }
