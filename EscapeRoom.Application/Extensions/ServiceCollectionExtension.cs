@@ -1,8 +1,8 @@
-﻿using EscapeRoom.Application.EscapeRoom;
+﻿using EscapeRoom.Application.EscapeRoom.Commands.CreateEscapeRoom;
 using EscapeRoom.Application.Mappings;
-using EscapeRoom.Application.Services;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -16,11 +16,12 @@ namespace EscapeRoom.Application.Extensions
     {
         public static void AddApplication(this IServiceCollection services)
         {
-            services.AddScoped<IEscapeRoomService, EscapeRoomService>();
+
+            services.AddMediatR(typeof(CreateEscapeRoomCommand));
 
             services.AddAutoMapper(typeof(EscapeRoomMappingProfile));
 
-            services.AddValidatorsFromAssemblyContaining<EscapeRoomDtoValidator>()
+            services.AddValidatorsFromAssemblyContaining<CreateEscapeRoomCommandValidator>()
                 .AddFluentValidationAutoValidation()
                 .AddFluentValidationClientsideAdapters();
         }

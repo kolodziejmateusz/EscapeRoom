@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EscapeRoom.Application.EscapeRoom
+namespace EscapeRoom.Application.EscapeRoom.Commands.CreateEscapeRoom
 {
-    public class EscapeRoomDtoValidator : AbstractValidator<EscapeRoomDto>
+    public class CreateEscapeRoomCommandValidator : AbstractValidator<CreateEscapeRoomCommand>
     {
-        public EscapeRoomDtoValidator(IEscapeRoomRepository repository)
+        public CreateEscapeRoomCommandValidator(IEscapeRoomRepository repository)
         {
             RuleFor(c => c.Name)
                 .NotEmpty().WithMessage("Nazwa jest wymagana.")
@@ -19,7 +19,7 @@ namespace EscapeRoom.Application.EscapeRoom
                 .Custom((value, context) =>
                 {
                     var existingEscapeRoom = repository.GetByName(value).Result;
-                    if (existingEscapeRoom != null) 
+                    if (existingEscapeRoom != null)
                     {
                         context.AddFailure($"Nazwa {value} jest zajęta.");
                     }

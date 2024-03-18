@@ -1,21 +1,23 @@
 ﻿using EscapeRoom.Application.EscapeRoom;
-using EscapeRoom.Application.Services;
+using EscapeRoom.Application.EscapeRoom.Commands.CreateEscapeRoom;
+using EscapeRoom.Application.EscapeRoom.Queries.GetAllEscapeRooms;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EscapeRoom.MVC.Controllers
 {
     public class EscapeRoomController : Controller
     {
-        private readonly IEscapeRoomService _escapeRoomService;
+        private readonly IMediator _mediator;
 
-        public EscapeRoomController(IEscapeRoomService escapeRoomService)
+        public EscapeRoomController(IMediator mediator)
         {
-            _escapeRoomService = escapeRoomService;
+            _mediator = mediator;
         }
 
         public async Task<IActionResult> Index()
         {
-            var escapeRoom = await _escapeRoomService.GetAll();
+            var escapeRoom = await _mediator.Send(new GetAllEscapeRoomsQuery());
             return View(escapeRoom);
         }
 
@@ -26,14 +28,14 @@ namespace EscapeRoom.MVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(EscapeRoomDto escapeRoomDto)
+        public async Task<IActionResult> Create(CreateEscapeRoomCommand command)
         {
             if (!ModelState.IsValid)
             {
-                return View(escapeRoomDto);
+                return View(command);
             }
-            await _escapeRoomService.Create(escapeRoomDto);
-            return RedirectToAction(nameof(Index)); //TODO
+            await _mediator.Send(command);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
