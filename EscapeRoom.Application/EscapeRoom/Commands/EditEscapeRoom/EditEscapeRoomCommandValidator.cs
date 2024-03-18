@@ -1,30 +1,16 @@
-﻿using EscapeRoom.Domain.Interfaces;
-using FluentValidation;
+﻿using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EscapeRoom.Application.EscapeRoom.Commands.CreateEscapeRoom
+namespace EscapeRoom.Application.EscapeRoom.Commands.EditEscapeRoom
 {
-    public class CreateEscapeRoomCommandValidator : AbstractValidator<CreateEscapeRoomCommand>
+    public class EditEscapeRoomCommandValidator : AbstractValidator<EditEscapeRoomCommand>
     {
-        public CreateEscapeRoomCommandValidator(IEscapeRoomRepository repository)
+        public EditEscapeRoomCommandValidator()
         {
-            RuleFor(c => c.Name)
-                .NotEmpty().WithMessage("Nazwa jest wymagana.")
-                .MinimumLength(3).WithMessage("Nazwa musi mieć minimum 3 znaki.")
-                .MaximumLength(40).WithMessage("Nazwa może mieć maksymalnie 40 znaków.")
-                .Custom((value, context) =>
-                {
-                    var existingEscapeRoom = repository.GetByName(value).Result;
-                    if (existingEscapeRoom != null)
-                    {
-                        context.AddFailure($"Nazwa {value} jest zajęta.");
-                    }
-                });
-
             RuleFor(c => c.Description)
                 .NotEmpty().WithMessage("Opis jest wymagany.")
                 .MinimumLength(20).WithMessage("Opis musi mieć minimum 20 znaki.")

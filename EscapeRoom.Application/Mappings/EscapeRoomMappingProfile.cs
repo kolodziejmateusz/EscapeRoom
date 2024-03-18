@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EscapeRoom.Application.EscapeRoom;
+using EscapeRoom.Application.EscapeRoom.Commands.EditEscapeRoom;
 using EscapeRoom.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,8 @@ namespace EscapeRoom.Application.Mappings
                 .ForMember(dto => dto.Street, opt => opt.MapFrom(src => src.AddressDetails.Street))
                 .ForMember(dto => dto.City, opt => opt.MapFrom(src => src.AddressDetails.City))
                 .ForMember(dto => dto.PostalCode, opt => opt.MapFrom(src => src.AddressDetails.PostalCode));
+
+            CreateMap<EscapeRoomDto, EditEscapeRoomCommand>();
         }
     }
 }

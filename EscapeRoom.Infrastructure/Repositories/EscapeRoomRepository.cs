@@ -18,6 +18,9 @@ namespace EscapeRoom.Infrastructure.Repositories
             _dbContext = dbContext;
         }
 
+        public Task Commit()
+        => _dbContext.SaveChangesAsync();
+
         public async Task Create(Domain.Entities.EscapeRoom escapeRoom)
         {
             _dbContext.Add(escapeRoom);

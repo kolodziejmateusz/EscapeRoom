@@ -1,5 +1,7 @@
-﻿using EscapeRoom.Application.EscapeRoom;
+﻿using AutoMapper;
+using EscapeRoom.Application.EscapeRoom;
 using EscapeRoom.Application.EscapeRoom.Commands.CreateEscapeRoom;
+using EscapeRoom.Application.EscapeRoom.Commands.EditEscapeRoom;
 using EscapeRoom.Application.EscapeRoom.Queries.GetAllEscapeRooms;
 using EscapeRoom.Application.EscapeRoom.Queries.GetEscapeRoomByEncodedName;
 using MediatR;
@@ -10,10 +12,12 @@ namespace EscapeRoom.MVC.Controllers
     public class EscapeRoomController : Controller
     {
         private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
 
-        public EscapeRoomController(IMediator mediator)
+        public EscapeRoomController(IMediator mediator, IMapper mapper)
         {
             _mediator = mediator;
+            _mapper = mapper;
         }
 
         public async Task<IActionResult> Index()
@@ -30,6 +34,26 @@ namespace EscapeRoom.MVC.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Create(CreateEscapeRoomCommand command)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(command);
+            }
+            await _mediator.Send(command);
+            return RedirectToAction(nameof(Index));
+        }
+
+        [Route("EscapeRoom/{encodedName}/edit")]
+        public async Task<IActionResult> Edit(string encodedName)
+        {
+            var dto = await _mediator.Send(new GetEscapeRoomByEncodedNameQuery(encodedName));
+            EditEscapeRoomCommand model = _mapper.Map<EditEscapeRoomCommand>(dto);
+            return View(model);
+        }
+
+        [HttpPost]
+        [Route("EscapeRoom/{encodedName}/edit")]
+        public async Task<IActionResult> Edit(string encodedName, EditEscapeRoomCommand command)
         {
             if (!ModelState.IsValid)
             {

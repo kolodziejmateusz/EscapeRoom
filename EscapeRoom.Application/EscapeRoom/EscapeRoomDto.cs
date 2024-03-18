@@ -9,7 +9,6 @@ namespace EscapeRoom.Application.EscapeRoom
 {
     public class EscapeRoomDto
     {
-        [Required(ErrorMessage ="Nazwa jest wymagana.")]
         public string Name { get; set; } = default!;
         public string? Description { get; set; }
         public string? PhoneNumber { get; set; }
