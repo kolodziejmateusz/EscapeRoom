@@ -4,7 +4,7 @@
 # [DEMO - kliknij aby przetestować aplikacje.](https://krzaczobrwisty.bsite.net/)
 
 
-Na początku chciałbym podkreślić, że projekt jest cały czas w fazie rozwoju i mam nadzieję z czasem dodawać tu nowe fukcje :D.
+Na początku chciałbym podkreślić, że projekt jest cały czas w fazie rozwoju i mam nadzieję z czasem dodawać tu nowe funkcje :D.
 
 Aplikacja służy do ogłaszania ofert firm zajmujących się prowadzeniem Escape Roomów. Użytkownik za jej pomocą może dodawać, edytować, wyświetlać szczegóły i przeglądać ofertę Escape Roomów w swojej okolicy.
 
@@ -27,7 +27,7 @@ Aplikacja służy do ogłaszania ofert firm zajmujących się prowadzeniem Escap
 W Projekcie użyłem między innymi:
 * ASP.NET Core MVC
 * Entity FrameWork
-* baze danych ms sql
+* baza danych MS SQL
 * clean architecture
 * CQRS i MediatR
 * automapper
