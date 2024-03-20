@@ -2,6 +2,7 @@
 using EscapeRoom.Infrastructure.Persistence;
 using EscapeRoom.Infrastructure.Repositories;
 using EscapeRoom.Infrastructure.Seeders;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +20,9 @@ namespace EscapeRoom.Infrastructure.Extensions
         {
             services.AddDbContext<EscapeRoomDbContext>(options => options.UseSqlServer(
                 configuration.GetConnectionString("EscapeRoom")));
+
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddEntityFrameworkStores<EscapeRoomDbContext>();
 
             services.AddScoped<EscapeRoomSeeder>();
             services.AddScoped<IEscapeRoomRepository, EscapeRoomRepository>();

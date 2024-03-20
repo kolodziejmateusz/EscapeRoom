@@ -43,6 +43,8 @@ namespace EscapeRoom.MVC
                 name: "default",
                 pattern: "{controller=EscapeRoom}/{action=Index}/{id?}");
 
+            app.MapRazorPages();
+
             app.Run();
         }
     }

@@ -5,11 +5,11 @@ VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EscapeRoom.MVC", "EscapeRoom.MVC\EscapeRoom.MVC.csproj", "{A0A4FB0B-2D4F-4CDF-8D2C-95602449BEA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EscapeRoom.Domain", "EscapeRoom.Domain\EscapeRoom.Domain.csproj", "{73363DAC-ADC3-4D18-9335-96B6EA7CE439}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EscapeRoom.Domain", "EscapeRoom.Domain\EscapeRoom.Domain.csproj", "{73363DAC-ADC3-4D18-9335-96B6EA7CE439}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EscapeRoom.Application", "EscapeRoom.Application\EscapeRoom.Application.csproj", "{3721F26C-DBDA-4F38-8309-AB88C2D79AF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EscapeRoom.Application", "EscapeRoom.Application\EscapeRoom.Application.csproj", "{3721F26C-DBDA-4F38-8309-AB88C2D79AF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EscapeRoom.Infrastructure", "EscapeRoom.Infrastructure\EscapeRoom.Infrastructure.csproj", "{3DFCBDB8-FCD8-45CE-904E-977EC1D5CC0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EscapeRoom.Infrastructure", "EscapeRoom.Infrastructure\EscapeRoom.Infrastructure.csproj", "{3DFCBDB8-FCD8-45CE-904E-977EC1D5CC0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

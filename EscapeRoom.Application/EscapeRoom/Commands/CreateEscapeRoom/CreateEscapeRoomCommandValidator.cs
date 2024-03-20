@@ -33,7 +33,7 @@ namespace EscapeRoom.Application.EscapeRoom.Commands.CreateEscapeRoom
             RuleFor(c => c.PhoneNumber)
                 .NotEmpty().WithMessage("Numer telefonu jest wymagany.")
                 .MinimumLength(8).WithMessage("Numer musi mieć minimum 8 znaków.")
-                .MaximumLength(14).WithMessage("Numer może mieć maksymalnie 14 znaków.");
+                .MaximumLength(15).WithMessage("Numer może mieć maksymalnie 15 znaków.");
 
             RuleFor(c => c.Street)
                 .NotEmpty().WithMessage("Ulica jest wymagana.")
