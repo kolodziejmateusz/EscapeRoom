@@ -46,7 +46,7 @@ namespace EscapeRoom.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EscapeRooms");
+                    b.ToTable("EscapeRooms", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -249,7 +249,7 @@ namespace EscapeRoom.Infrastructure.Migrations
 
             modelBuilder.Entity("EscapeRoom.Domain.Entities.EscapeRoom", b =>
                 {
-                    b.OwnsOne("EscapeRoom.Domain.Entities.EscapeRoomAddressDetails", "AddressDetails", b1 =>
+                    b.OwnsOne("EscapeRoom.Domain.Entities.EscapeRoom.AddressDetails#EscapeRoom.Domain.Entities.EscapeRoomAddressDetails", "AddressDetails", b1 =>
                         {
                             b1.Property<int>("EscapeRoomId")
                                 .HasColumnType("int");
@@ -268,7 +268,7 @@ namespace EscapeRoom.Infrastructure.Migrations
 
                             b1.HasKey("EscapeRoomId");
 
-                            b1.ToTable("EscapeRooms");
+                            b1.ToTable("EscapeRooms", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("EscapeRoomId");

@@ -5,6 +5,7 @@ using EscapeRoom.Application.EscapeRoom.Commands.EditEscapeRoom;
 using EscapeRoom.Application.EscapeRoom.Queries.GetAllEscapeRooms;
 using EscapeRoom.Application.EscapeRoom.Queries.GetEscapeRoomByEncodedName;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EscapeRoom.MVC.Controllers
@@ -26,13 +27,14 @@ namespace EscapeRoom.MVC.Controllers
             return View(escapeRoom);
         }
 
-        [HttpGet]
+        [Authorize]
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create(CreateEscapeRoomCommand command)
         {
             if (!ModelState.IsValid)
