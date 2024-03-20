@@ -28,7 +28,7 @@ namespace EscapeRoom.Application.EscapeRoom.Commands.CreateEscapeRoom
             RuleFor(c => c.Description)
                 .NotEmpty().WithMessage("Opis jest wymagany.")
                 .MinimumLength(20).WithMessage("Opis musi mieć minimum 20 znaki.")
-                .MaximumLength(255).WithMessage("Opis może mieć maksymalnie 255 znaków.");
+                .MaximumLength(1000).WithMessage("Opis może mieć maksymalnie 1000 znaków.");
 
             RuleFor(c => c.PhoneNumber)
                 .NotEmpty().WithMessage("Numer telefonu jest wymagany.")

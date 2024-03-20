@@ -33,6 +33,9 @@ namespace EscapeRoom.Infrastructure.Migrations
                     b.Property<DateTime>("CratedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CreatedById")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -46,7 +49,9 @@ namespace EscapeRoom.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EscapeRooms", (string)null);
+                    b.HasIndex("CreatedById");
+
+                    b.ToTable("EscapeRooms");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -194,10 +199,12 @@ namespace EscapeRoom.Infrastructure.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -234,10 +241,12 @@ namespace EscapeRoom.Infrastructure.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -249,7 +258,11 @@ namespace EscapeRoom.Infrastructure.Migrations
 
             modelBuilder.Entity("EscapeRoom.Domain.Entities.EscapeRoom", b =>
                 {
-                    b.OwnsOne("EscapeRoom.Domain.Entities.EscapeRoom.AddressDetails#EscapeRoom.Domain.Entities.EscapeRoomAddressDetails", "AddressDetails", b1 =>
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById");
+
+                    b.OwnsOne("EscapeRoom.Domain.Entities.EscapeRoomAddressDetails", "AddressDetails", b1 =>
                         {
                             b1.Property<int>("EscapeRoomId")
                                 .HasColumnType("int");
@@ -268,7 +281,7 @@ namespace EscapeRoom.Infrastructure.Migrations
 
                             b1.HasKey("EscapeRoomId");
 
-                            b1.ToTable("EscapeRooms", (string)null);
+                            b1.ToTable("EscapeRooms");
 
                             b1.WithOwner()
                                 .HasForeignKey("EscapeRoomId");
@@ -276,6 +289,8 @@ namespace EscapeRoom.Infrastructure.Migrations
 
                     b.Navigation("AddressDetails")
                         .IsRequired();
+
+                    b.Navigation("CreatedBy");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
