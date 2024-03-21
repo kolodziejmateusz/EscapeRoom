@@ -49,6 +49,12 @@ namespace EscapeRoom.MVC.Controllers
         public async Task<IActionResult> Edit(string encodedName)
         {
             var dto = await _mediator.Send(new GetEscapeRoomByEncodedNameQuery(encodedName));
+
+            if(!dto.IsEditable)
+            {
+                return RedirectToAction("NoAccess", "Home");
+            }
+
             EditEscapeRoomCommand model = _mapper.Map<EditEscapeRoomCommand>(dto);
             return View(model);
         }

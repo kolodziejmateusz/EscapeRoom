@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using EscapeRoom.Application.ApplicationUser;
 using EscapeRoom.Application.EscapeRoom;
 using EscapeRoom.Application.EscapeRoom.Commands.EditEscapeRoom;
 using EscapeRoom.Domain.Entities;
@@ -12,8 +13,9 @@ namespace EscapeRoom.Application.Mappings
 {
     public class EscapeRoomMappingProfile : Profile
     {
-        public EscapeRoomMappingProfile()
+        public EscapeRoomMappingProfile(IUserContext userContext)
         {
+            var user = userContext.GetCurrentUser();
             CreateMap<EscapeRoomDto, Domain.Entities.EscapeRoom>()
                 .ForMember(e => e.AddressDetails, opt => opt.MapFrom(src => new EscapeRoomAddressDetails()
                 {
@@ -24,6 +26,7 @@ namespace EscapeRoom.Application.Mappings
                 }));
 
             CreateMap<Domain.Entities.EscapeRoom, EscapeRoomDto>()
+                .ForMember(dto => dto.IsEditable, opt => opt.MapFrom(src => user != null && src.CreatedById == user.Id))
                 .ForMember(dto => dto.PhoneNumber, opt => opt.MapFrom(src => src.AddressDetails.PhoneNumber))
                 .ForMember(dto => dto.Street, opt => opt.MapFrom(src => src.AddressDetails.Street))
                 .ForMember(dto => dto.City, opt => opt.MapFrom(src => src.AddressDetails.City))

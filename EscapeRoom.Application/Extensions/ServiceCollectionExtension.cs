@@ -1,15 +1,11 @@
-﻿using EscapeRoom.Application.ApplicationUser;
+﻿using AutoMapper;
+using EscapeRoom.Application.ApplicationUser;
 using EscapeRoom.Application.EscapeRoom.Commands.CreateEscapeRoom;
 using EscapeRoom.Application.Mappings;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EscapeRoom.Application.Extensions
 {
@@ -21,7 +17,13 @@ namespace EscapeRoom.Application.Extensions
 
             services.AddMediatR(typeof(CreateEscapeRoomCommand));
 
-            services.AddAutoMapper(typeof(EscapeRoomMappingProfile));
+            services.AddScoped(provider => new MapperConfiguration(cfg =>
+            {
+                var scope = provider.CreateScope();
+                var userContext = scope.ServiceProvider.GetRequiredService<IUserContext>();
+                cfg.AddProfile(new EscapeRoomMappingProfile(userContext));
+            }).CreateMapper()
+            );
 
             services.AddValidatorsFromAssemblyContaining<CreateEscapeRoomCommandValidator>()
                 .AddFluentValidationAutoValidation()

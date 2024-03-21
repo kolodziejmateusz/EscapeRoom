@@ -26,8 +26,12 @@
             </div>
             <div class="card-footer">
                 <a class="btn btn-primary" asp-controller="EscapeRoom" asp-action="Details" asp-route-encodedName="@item.EncodedName">Szczegóły</a>
-                <a class="btn btn-outline-secondary" asp-controller="EscapeRoom" asp-action="Edit" asp-route-encodedName="@item.EncodedName">Edytuj</a>
-            </div>
+                
+                @if(item.IsEditable)
+                {
+                    <a class="btn btn-outline-secondary" asp-controller="EscapeRoom" asp-action="Edit" asp-route-encodedName="@item.EncodedName">Edytuj</a>
+                }
+                </div>
         </div>
     }
 </div>

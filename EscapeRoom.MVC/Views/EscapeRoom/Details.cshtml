@@ -51,6 +51,9 @@
     <img src="@path" class="card-img-top" alt="@path" style="border-radius: 10px;">
 </div>
 <div style="margin-top: 10px;">
-    <a class="btn btn-outline-secondary" asp-controller="EscapeRoom" asp-action="Edit" asp-route-encodedName="@Model.EncodedName">Edytuj</a>
+    @if (Model.IsEditable)
+    {
+        <a class="btn btn-outline-secondary" asp-controller="EscapeRoom" asp-action="Edit" asp-route-encodedName="@Model.EncodedName">Edytuj</a>
+    }
     <a asp-action="Index" class="btn btn-primary">Wróć do listy</a>
 </div>
