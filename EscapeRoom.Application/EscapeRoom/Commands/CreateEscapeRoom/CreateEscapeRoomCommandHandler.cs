@@ -24,9 +24,15 @@ namespace EscapeRoom.Application.EscapeRoom.Commands.CreateEscapeRoom
         }
         public async Task<Unit> Handle(CreateEscapeRoomCommand request, CancellationToken cancellationToken)
         {
+            var currentUser = _userContext.GetCurrentUser();
+            if (currentUser == null || !currentUser.IsInRole("Owner"))
+            {
+                return Unit.Value;
+            }
+
             var escapeRoom = _mapper.Map<Domain.Entities.EscapeRoom>(request);
             escapeRoom.EncodeName();
-            escapeRoom.CreatedById = _userContext.GetCurrentUser().Id;
+            escapeRoom.CreatedById = currentUser.Id;
             await _escapeRoomRepository.Create(escapeRoom);
 
             return Unit.Value;

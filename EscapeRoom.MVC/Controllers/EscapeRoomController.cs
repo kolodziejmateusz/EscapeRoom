@@ -27,7 +27,7 @@ namespace EscapeRoom.MVC.Controllers
             return View(escapeRoom);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Owner")]
         public IActionResult Create()
         {
             return View();
