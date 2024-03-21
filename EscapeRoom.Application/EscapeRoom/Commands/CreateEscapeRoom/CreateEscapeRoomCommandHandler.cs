@@ -25,7 +25,7 @@ namespace EscapeRoom.Application.EscapeRoom.Commands.CreateEscapeRoom
         public async Task<Unit> Handle(CreateEscapeRoomCommand request, CancellationToken cancellationToken)
         {
             var currentUser = _userContext.GetCurrentUser();
-            if (currentUser == null || !currentUser.IsInRole("Owner"))
+            if (currentUser == null || (!currentUser.IsInRole("Owner") && !currentUser.IsInRole("Moderator")))
             {
                 return Unit.Value;
             }
