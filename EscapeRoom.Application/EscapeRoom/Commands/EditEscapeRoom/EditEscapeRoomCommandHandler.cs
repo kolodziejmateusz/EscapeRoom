@@ -24,7 +24,7 @@ namespace EscapeRoom.Application.EscapeRoom.Commands.EditEscapeRoom
             var escapeRoom = await _escapeRoomRepository.GetByEncodedName(request.EncodedName!);
 
             var user = _userContext.GetCurrentUser();
-            var isEditable = user != null && escapeRoom.CreatedById == user.Id;
+            var isEditable = user != null && (escapeRoom.CreatedById == user.Id || user.IsInRole("Moderator"));
 
             if (!isEditable)
             {
