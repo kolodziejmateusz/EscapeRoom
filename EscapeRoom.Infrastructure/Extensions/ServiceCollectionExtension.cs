@@ -22,6 +22,8 @@ namespace EscapeRoom.Infrastructure.Extensions
 
             services.AddScoped<EscapeRoomSeeder>();
             services.AddScoped<IEscapeRoomRepository, EscapeRoomRepository>();
+            services.AddScoped<IEscapeRoomReviewRepository, EscapeRoomReviewRepository>();
+
         }
     }
 }

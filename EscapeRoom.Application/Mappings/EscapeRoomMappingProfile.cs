@@ -2,6 +2,7 @@
 using EscapeRoom.Application.ApplicationUser;
 using EscapeRoom.Application.EscapeRoom;
 using EscapeRoom.Application.EscapeRoom.Commands.EditEscapeRoom;
+using EscapeRoom.Application.EscapeRoomReview;
 using EscapeRoom.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,9 @@ namespace EscapeRoom.Application.Mappings
                 .ForMember(dto => dto.PostalCode, opt => opt.MapFrom(src => src.AddressDetails.PostalCode));
 
             CreateMap<EscapeRoomDto, EditEscapeRoomCommand>();
+
+            CreateMap<EscapeRoomReviewDto, Domain.Entities.EscapeRoomReview>()
+                .ReverseMap();
         }
     }
 }
