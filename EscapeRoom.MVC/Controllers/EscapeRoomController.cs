@@ -4,9 +4,12 @@ using EscapeRoom.Application.EscapeRoom.Commands.CreateEscapeRoom;
 using EscapeRoom.Application.EscapeRoom.Commands.EditEscapeRoom;
 using EscapeRoom.Application.EscapeRoom.Queries.GetAllEscapeRooms;
 using EscapeRoom.Application.EscapeRoom.Queries.GetEscapeRoomByEncodedName;
+using EscapeRoom.MVC.Extensions;
+using EscapeRoom.MVC.Models;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace EscapeRoom.MVC.Controllers
 {
@@ -34,14 +37,18 @@ namespace EscapeRoom.MVC.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Owner,Moderator")]
         public async Task<IActionResult> Create(CreateEscapeRoomCommand command)
         {
             if (!ModelState.IsValid)
             {
                 return View(command);
             }
-            await _mediator.Send(command);
+
+            //await _mediator.Send(command);
+
+            this.SetNotification("success", $"Utworzono nowy Escape Room: {command.Name}");
+
             return RedirectToAction(nameof(Index));
         }
 
