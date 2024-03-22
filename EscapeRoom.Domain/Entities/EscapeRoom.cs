@@ -20,6 +20,8 @@ namespace EscapeRoom.Domain.Entities
 
         public string EncodedName { get; private set; } = default!;
 
+        public List<EscapeRoomReview> Reviews { get; set; } = new();
+
         public void EncodeName()
         {
             EncodedName = Name.Trim().ToLower().Replace(" ", "-");

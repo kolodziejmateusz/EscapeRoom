@@ -11,6 +11,7 @@ namespace EscapeRoom.Infrastructure.Persistence
         }
 
         public DbSet<Domain.Entities.EscapeRoom> EscapeRooms { get; set; }
+        public DbSet<Domain.Entities.EscapeRoomReview> Reviews { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -18,6 +19,11 @@ namespace EscapeRoom.Infrastructure.Persistence
 
             modelBuilder.Entity<Domain.Entities.EscapeRoom>()
                 .OwnsOne(c => c.AddressDetails);
+
+            modelBuilder.Entity<Domain.Entities.EscapeRoom>()
+                .HasMany(c => c.Reviews)
+                .WithOne(s => s.EscapeRoom)
+                .HasForeignKey(s => s.EscapeRoomId);
         }
     }
 }
