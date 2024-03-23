@@ -1,0 +1,61 @@
+﻿@model EscapeRoom.Application.EscapeRoomReview.Commands.CreateEscapeRoomReviewCommand
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createEscapeRoomReviewModal">
+    Dodaj recenzje
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="createEscapeRoomReviewModal" tabindex="-1" aria-labelledby="createEscapeRoomReviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-action="CreateEscapeRoomReview">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="createEscapeRoomReviewModalLabel">Utwórz nową recenzje</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+                <div class="modal-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <input asp-for="EscapeRoomEncodedName" class="form-control" type="hidden" />
+
+                    <div class="form-group">
+                        <label asp-for="ReviewerName" class="control-label">Nazwa recenzenta</label>
+                        <input asp-for="ReviewerName" class="form-control" />
+                        <span asp-validation-for="ReviewerName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Review" class="control-label">Recenzja</label>
+                        <input asp-for="Review" class="form-control" />
+                        <span asp-validation-for="Review" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StarRating" class="control-label">Ilość gwiazdek</label>
+                        <select asp-for="StarRating" class="form-control">
+                            <option value="">Wybierz ocenę</option>
+                            <option value="OneStar">Jedna gwiazdka</option>
+                            <option value="TwoStars">Dwie gwiazdki</option>
+                            <option value="ThreeStars">Trzy gwiazdki</option>
+                            <option value="FourStars">Cztery gwiazdki</option>
+                            <option value="FiveStars">Pięć gwiazdek</option>
+                        </select>
+                        <span asp-validation-for="StarRating" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

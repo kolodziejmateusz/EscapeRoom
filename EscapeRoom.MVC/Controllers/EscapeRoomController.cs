@@ -4,6 +4,7 @@ using EscapeRoom.Application.EscapeRoom.Commands.CreateEscapeRoom;
 using EscapeRoom.Application.EscapeRoom.Commands.EditEscapeRoom;
 using EscapeRoom.Application.EscapeRoom.Queries.GetAllEscapeRooms;
 using EscapeRoom.Application.EscapeRoom.Queries.GetEscapeRoomByEncodedName;
+using EscapeRoom.Application.EscapeRoomReview.Commands;
 using EscapeRoom.MVC.Extensions;
 using EscapeRoom.MVC.Models;
 using MediatR;
@@ -52,7 +53,7 @@ namespace EscapeRoom.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [Route("EscapeRoom/{encodedName}/edit")]
+        [Route("EscapeRoom/{encodedName}/Edit")]
         public async Task<IActionResult> Edit(string encodedName)
         {
             var dto = await _mediator.Send(new GetEscapeRoomByEncodedNameQuery(encodedName));
@@ -67,7 +68,7 @@ namespace EscapeRoom.MVC.Controllers
         }
 
         [HttpPost]
-        [Route("EscapeRoom/{encodedName}/edit")]
+        [Route("EscapeRoom/{encodedName}/Edit")]
         public async Task<IActionResult> Edit(string encodedName, EditEscapeRoomCommand command)
         {
             if (!ModelState.IsValid)
@@ -78,11 +79,27 @@ namespace EscapeRoom.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [Route("EscapeRoom/{encodedName}/details")]
+        [Route("EscapeRoom/{encodedName}/Details")]
         public async Task<IActionResult> Details(string encodedName)
         {
             var dto = await _mediator.Send(new GetEscapeRoomByEncodedNameQuery(encodedName));
             return View(dto);
+        }
+
+
+        [HttpPost]
+        [Authorize(Roles = "Owner,Moderator")]
+        [Route("EscapeRoom/EscapeRoomReview")]
+        public async Task<IActionResult> CreateEscapeRoomReview(CreateEscapeRoomReviewCommand command)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            await _mediator.Send(command);
+
+            return Ok();
         }
     }
 }
