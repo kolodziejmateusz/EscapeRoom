@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EscapeRoom.Infrastructure.Repositories
 {
-    internal class EscapeRoomRepository : IEscapeRoomRepository
+    public class EscapeRoomRepository : IEscapeRoomRepository
     {
         private readonly EscapeRoomDbContext _dbContext;
 
@@ -25,6 +25,16 @@ namespace EscapeRoom.Infrastructure.Repositories
         {
             _dbContext.Add(escapeRoom);
             await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task Delete(string encodedName)
+        {
+            Domain.Entities.EscapeRoom? escapeRoom = await _dbContext.EscapeRooms.FirstAsync(c => c.EncodedName == encodedName);
+            if (escapeRoom != null)
+            {
+                _dbContext.EscapeRooms.Remove(escapeRoom);
+                _dbContext.SaveChanges();
+            }
         }
 
         public async Task<IEnumerable<Domain.Entities.EscapeRoom>> GetAll()

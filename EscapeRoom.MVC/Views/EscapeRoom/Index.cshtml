@@ -1,4 +1,5 @@
-﻿@model IEnumerable<EscapeRoom.Application.EscapeRoom.EscapeRoomDto>
+﻿@using EscapeRoom.Application.EscapeRoom
+@model IEnumerable<EscapeRoom.Application.EscapeRoom.EscapeRoomDto>
 
 @{
     ViewData["Title"] = "Escape Rooms";
@@ -30,6 +31,7 @@
                     @if(item.IsEditable)
                     {
                         <a class="btn btn-outline-secondary" asp-controller="EscapeRoom" asp-action="Edit" asp-route-encodedName="@item.EncodedName">Edytuj</a>
+                    <partial name="_DeleteEscapeRoomReview" model="new EscapeRoomDto() {EncodedName = item.EncodedName, Name = item.Name}" />
                     }
                 </div>
         </div>

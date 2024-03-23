@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EscapeRoom.Application.EscapeRoom;
 using EscapeRoom.Application.EscapeRoom.Commands.CreateEscapeRoom;
+using EscapeRoom.Application.EscapeRoom.Commands.DeleteEscapeRoom;
 using EscapeRoom.Application.EscapeRoom.Commands.EditEscapeRoom;
 using EscapeRoom.Application.EscapeRoom.Queries.GetAllEscapeRooms;
 using EscapeRoom.Application.EscapeRoom.Queries.GetEscapeRoomByEncodedName;
@@ -11,6 +12,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace EscapeRoom.MVC.Controllers
 {
@@ -46,7 +48,7 @@ namespace EscapeRoom.MVC.Controllers
                 return View(command);
             }
 
-            //await _mediator.Send(command);
+            await _mediator.Send(command);
 
             this.SetNotification("success", $"Utworzono nowy Escape Room: {command.Name}");
 
@@ -84,6 +86,17 @@ namespace EscapeRoom.MVC.Controllers
         {
             var dto = await _mediator.Send(new GetEscapeRoomByEncodedNameQuery(encodedName));
             return View(dto);
+        }
+
+        [Authorize(Roles = "Owner,Moderator")]
+        [Route("EscapeRoom/{encodedName}/Delete")]
+        public async Task<IActionResult> Delete(string encodedName)
+        {
+            await _mediator.Send(new DeleteEscapeRoomCommand(encodedName));
+
+            this.SetNotification("info", $"Usunięto Escape Room");
+
+            return RedirectToAction(nameof(Index));
         }
 
 
