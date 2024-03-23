@@ -88,7 +88,7 @@ namespace EscapeRoom.MVC.Controllers
 
 
         [HttpPost]
-        [Authorize(Roles = "Owner,Moderator")]
+        [Authorize]
         [Route("EscapeRoom/EscapeRoomReview")]
         public async Task<IActionResult> CreateEscapeRoomReview(CreateEscapeRoomReviewCommand command)
         {

@@ -1,4 +1,5 @@
-﻿@model EscapeRoom.Application.EscapeRoom.EscapeRoomDto
+﻿@using EscapeRoom.Application.EscapeRoomReview.Commands
+@model EscapeRoom.Application.EscapeRoom.EscapeRoomDto
 
 @{
     ViewData["Title"] = "Details";
@@ -56,4 +57,10 @@
         <a class="btn btn-outline-secondary" asp-controller="EscapeRoom" asp-action="Edit" asp-route-encodedName="@Model.EncodedName">Edytuj</a>
     }
     <a asp-action="Index" class="btn btn-primary">Wróć do listy</a>
+    <partial name="_CreateEscapeRoomReview" model="new CreateEscapeRoomReviewCommand() {EscapeRoomEncodedName = Model.EncodedName}" />
+
 </div>
+
+@section Scripts {
+    <script src="~/js/EscapeRoom/Edit.js"></script>
+}
