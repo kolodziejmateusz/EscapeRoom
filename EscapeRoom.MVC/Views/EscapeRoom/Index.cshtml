@@ -31,7 +31,7 @@
                     @if(item.IsEditable)
                     {
                         <a class="btn btn-outline-secondary" asp-controller="EscapeRoom" asp-action="Edit" asp-route-encodedName="@item.EncodedName">Edytuj</a>
-                    <partial name="_DeleteEscapeRoomReview" model="new EscapeRoomDto() {EncodedName = item.EncodedName, Name = item.Name}" />
+                        <partial name="_DeleteEscapeRoomReview" model="new EscapeRoomDto() {EncodedName = item.EncodedName, Name = item.Name}" />
                     }
                 </div>
         </div>

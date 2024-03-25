@@ -24,8 +24,12 @@ namespace EscapeRoom.Application.EscapeRoom.Commands.DeleteEscapeRoom
 
         public async Task<Unit> Handle(DeleteEscapeRoomCommand request, CancellationToken cancellationToken)
         {
-            var currentUser = _userContext.GetCurrentUser();
-            if (currentUser == null || (!currentUser.IsInRole("Owner") && !currentUser.IsInRole("Moderator")))
+            var escapeRoom = await _escapeRoomRepository.GetByEncodedName(request.EncodedName!);
+
+            var user = _userContext.GetCurrentUser();
+            var isEditable = user != null && (escapeRoom.CreatedById == user.Id || user.IsInRole("Moderator"));
+
+            if (!isEditable)
             {
                 return Unit.Value;
             }
