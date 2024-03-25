@@ -10,7 +10,7 @@ $(document).ready(function () {
                 toastr["success"]("Utworzono recenzje")
             },
             error: function () {
-                toastr["error"]("Cos poszlo nie tak")
+                toastr["error"]("Cos poszlo nie tak, pusty formularz lub niezalogowany")
             }
         })
     });

@@ -19,5 +19,9 @@
     <ProjectReference Include="..\EscapeRoom.Application\EscapeRoom.Application.csproj" />
     <ProjectReference Include="..\EscapeRoom.Infrastructure\EscapeRoom.Infrastructure.csproj" />
   </ItemGroup>
+	
+  <ItemGroup>
+    <Folder Include="wwwroot\js\EscapeRoom\" />
+  </ItemGroup>
 
 </Project>
