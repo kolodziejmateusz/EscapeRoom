@@ -17,7 +17,7 @@
                  </div>
                   <div class="card-footer">
                      ${stars}
-                     <button class="btn btn-danger delete-review-btn" data-review-id="${review.id}">Usuń</button>
+                     ${review.isEditable ? `<button class="btn btn-danger delete-review-btn" data-review-id="${review.id}">Usuń</button>` : ''}
                  </div>
              </div>`
         )

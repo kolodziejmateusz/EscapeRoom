@@ -35,8 +35,10 @@ namespace EscapeRoom.Application.Mappings
 
             CreateMap<EscapeRoomDto, EditEscapeRoomCommand>();
 
-            CreateMap<EscapeRoomReviewDto, Domain.Entities.EscapeRoomReview>()
-                .ReverseMap();
+            CreateMap<Domain.Entities.EscapeRoomReview, EscapeRoomReviewDto>()
+                .ForMember(dto => dto.IsEditable, opt => opt.MapFrom(src => user != null && (src.CreatedById == user.Id || user.IsInRole("Moderator"))));
+
+            CreateMap<EscapeRoomReviewDto, Domain.Entities.EscapeRoomReview>();
         }
     }
 }
