@@ -2,13 +2,22 @@
     container.empty();
 
     for (const review of reviews) {
+
+        let stars = '';
+        for (let i = 0; i < review.starRating; i++) {
+            stars += `<img src="/content/images/star.png" alt="gwiazdka">`;
+        }
+
         container.append(
             `<div class="card border-secondary mb-3" style="max-width: 18rem; margin: 5px;">
                 <div class="card-header">${review.reviewerName}</div>
-                    <div class="card-body">
-                        <h6 class="card-title">${review.review}</h6> 
-                    </div>
-                </div>`
+                 <div class="card-body">
+                     <h6 class="card-title">${review.review}</h6> 
+                 </div>
+                  <div class="card-footer">
+                     ${stars}
+                 </div>
+             </div>`
         )
     }
 }
