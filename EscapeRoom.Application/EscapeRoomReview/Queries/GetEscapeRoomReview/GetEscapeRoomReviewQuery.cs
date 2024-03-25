@@ -9,6 +9,10 @@ namespace EscapeRoom.Application.EscapeRoomReview.Queries.GetEscapeRoomReview
 {
     public class GetEscapeRoomReviewQuery : IRequest<IEnumerable<EscapeRoomReviewDto>>
     {
+        public GetEscapeRoomReviewQuery(string encodedName)
+        {
+            EncodedName = encodedName;
+        }
         public string EncodedName { get; set; } = default!;
     }
 }

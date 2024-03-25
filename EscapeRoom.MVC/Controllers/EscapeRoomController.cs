@@ -120,7 +120,7 @@ namespace EscapeRoom.MVC.Controllers
         [Route("EscapeRoom/{encodedName}/EscapeRoomReview")]
         public async Task<IActionResult> GetEscapeRoomReview(string encodedName)
         {
-            var data = await _mediator.Send(new GetEscapeRoomReviewQuery() { EncodedName = encodedName });
+            var data = await _mediator.Send(new GetEscapeRoomReviewQuery(encodedName));
             return Ok(data);
         }
     }
