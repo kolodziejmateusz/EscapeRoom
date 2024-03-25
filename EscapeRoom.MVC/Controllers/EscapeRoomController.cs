@@ -79,6 +79,9 @@ namespace EscapeRoom.MVC.Controllers
                 return View(command);
             }
             await _mediator.Send(command);
+
+            this.SetNotification("success", $"Zedytowano Escape Room: {command.Name}");
+
             return RedirectToAction(nameof(Index));
         }
 

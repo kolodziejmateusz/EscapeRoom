@@ -48,6 +48,8 @@
     <a asp-action="Index" class="btn btn-secondary">Wróć do listy</a>
     <partial name="_CreateEscapeRoomReview" model="new CreateEscapeRoomReviewCommand() {EscapeRoomEncodedName = Model.EncodedName}" />
 </div>
+<hr />
+<br />
 
 <h3>Recenzje: </h3>
 <div id="reviews" class="row" data-encoded-name="@Model.EncodedName"></div>
