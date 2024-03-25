@@ -43,11 +43,15 @@
     </div>
 </div>
 <br />
-<div>
+<div class="m-3">
     <partial name="_DeleteEscapeRoomReview" />
     <a asp-action="Index" class="btn btn-secondary">Wróć do listy</a>
     <partial name="_CreateEscapeRoomReview" model="new CreateEscapeRoomReviewCommand() {EscapeRoomEncodedName = Model.EncodedName}" />
-    
+</div>
+
+<h3>Recenzje: </h3>
+<div id="reviews" class="row" data-encoded-name="@Model.EncodedName">
+
 </div>
 
 @section Scripts {
