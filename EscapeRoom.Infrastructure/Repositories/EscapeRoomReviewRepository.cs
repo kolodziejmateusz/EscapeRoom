@@ -25,9 +25,22 @@ namespace EscapeRoom.Infrastructure.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
+        public async Task Delete(int id)
+        {
+            Domain.Entities.EscapeRoomReview? escapeRoomReview = await _dbContext.Reviews.FirstAsync(c => c.Id == id);
+            if (escapeRoomReview != null)
+            {
+                _dbContext.Reviews.Remove(escapeRoomReview);
+                _dbContext.SaveChanges();
+            }
+        }
+
         public async Task<IEnumerable<EscapeRoomReview>> GetAllByEncodedName(string encodedName)
         => await _dbContext.Reviews
             .Where(s => s.EscapeRoom.EncodedName == encodedName)
             .ToListAsync();
+
+        public async Task<Domain.Entities.EscapeRoomReview> GetById(int id)
+        => await _dbContext.Reviews.FirstAsync(c => c.Id == id);
     }
 }

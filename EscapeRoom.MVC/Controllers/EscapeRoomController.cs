@@ -6,6 +6,7 @@ using EscapeRoom.Application.EscapeRoom.Commands.EditEscapeRoom;
 using EscapeRoom.Application.EscapeRoom.Queries.GetAllEscapeRooms;
 using EscapeRoom.Application.EscapeRoom.Queries.GetEscapeRoomByEncodedName;
 using EscapeRoom.Application.EscapeRoomReview.Commands.CreateEscapeRoomReview;
+using EscapeRoom.Application.EscapeRoomReview.Commands.DeleteEscapeRoomReview;
 using EscapeRoom.Application.EscapeRoomReview.Queries.GetEscapeRoomReview;
 using EscapeRoom.MVC.Extensions;
 using EscapeRoom.MVC.Models;
@@ -125,6 +126,16 @@ namespace EscapeRoom.MVC.Controllers
         {
             var data = await _mediator.Send(new GetEscapeRoomReviewQuery(encodedName));
             return Ok(data);
+        }
+
+        [Route("EscapeRoom/EscapeRoomReview/{id}/Delete")]
+        public async Task<IActionResult> DeleteEscapeRoomReview(string id)
+        {
+            //TODO
+            Console.WriteLine($"Identyfikator: {id}");
+            //this.SetNotification("success", $"Usunięto Escape Room: {id}");
+            await _mediator.Send(new DeleteEscapeRoomReviewCommand(id));
+            return Ok();
         }
     }
 }

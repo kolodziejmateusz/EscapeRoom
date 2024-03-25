@@ -11,5 +11,7 @@ namespace EscapeRoom.Domain.Interfaces
     {
         Task Create(EscapeRoomReview escapeRoomReview);
         Task<IEnumerable<EscapeRoomReview>> GetAllByEncodedName(string encodedName);
+        Task<Domain.Entities.EscapeRoomReview> GetById(int id);
+        Task Delete(int id);
     }
 }
