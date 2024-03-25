@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace EscapeRoom.Application.EscapeRoomReview.Commands
+namespace EscapeRoom.Application.EscapeRoomReview.Commands.CreateEscapeRoomReview
 {
     public class CreateEscapeRoomReviewCommand : EscapeRoomReviewDto, IRequest
     {

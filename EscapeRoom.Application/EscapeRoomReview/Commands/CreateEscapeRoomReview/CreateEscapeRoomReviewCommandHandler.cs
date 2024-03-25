@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EscapeRoom.Application.EscapeRoomReview.Commands
+namespace EscapeRoom.Application.EscapeRoomReview.Commands.CreateEscapeRoomReview
 {
     public class CreateEscapeRoomReviewCommandHandler : IRequestHandler<CreateEscapeRoomReviewCommand>
     {

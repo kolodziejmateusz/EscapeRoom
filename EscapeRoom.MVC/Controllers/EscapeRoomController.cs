@@ -5,7 +5,8 @@ using EscapeRoom.Application.EscapeRoom.Commands.DeleteEscapeRoom;
 using EscapeRoom.Application.EscapeRoom.Commands.EditEscapeRoom;
 using EscapeRoom.Application.EscapeRoom.Queries.GetAllEscapeRooms;
 using EscapeRoom.Application.EscapeRoom.Queries.GetEscapeRoomByEncodedName;
-using EscapeRoom.Application.EscapeRoomReview.Commands;
+using EscapeRoom.Application.EscapeRoomReview.Commands.CreateEscapeRoomReview;
+using EscapeRoom.Application.EscapeRoomReview.Queries.GetEscapeRoomReview;
 using EscapeRoom.MVC.Extensions;
 using EscapeRoom.MVC.Models;
 using MediatR;
@@ -113,6 +114,14 @@ namespace EscapeRoom.MVC.Controllers
             await _mediator.Send(command);
 
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("EscapeRoom/{encodedName}/EscapeRoomReview")]
+        public async Task<IActionResult> GetEscapeRoomReview(string encodedName)
+        {
+            var data = await _mediator.Send(new GetEscapeRoomReviewQuery() { EncodedName = encodedName });
+            return Ok(data);
         }
     }
 }

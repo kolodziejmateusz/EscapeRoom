@@ -1,6 +1,7 @@
 ﻿using EscapeRoom.Domain.Entities;
 using EscapeRoom.Domain.Interfaces;
 using EscapeRoom.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,5 +24,10 @@ namespace EscapeRoom.Infrastructure.Repositories
             _dbContext.Reviews.Add(escapeRoomReview);
             await _dbContext.SaveChangesAsync();
         }
+
+        public async Task<IEnumerable<EscapeRoomReview>> GetAllByEncodedName(string encodedName)
+        => await _dbContext.Reviews
+            .Where(s => s.EscapeRoom.EncodedName == encodedName)
+            .ToListAsync();
     }
 }

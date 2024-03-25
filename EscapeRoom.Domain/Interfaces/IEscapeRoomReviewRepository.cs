@@ -10,5 +10,6 @@ namespace EscapeRoom.Domain.Interfaces
     public interface IEscapeRoomReviewRepository
     {
         Task Create(EscapeRoomReview escapeRoomReview);
+        Task<IEnumerable<EscapeRoomReview>> GetAllByEncodedName(string encodedName);
     }
 }
