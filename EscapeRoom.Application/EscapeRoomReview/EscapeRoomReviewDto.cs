@@ -4,6 +4,7 @@ namespace EscapeRoom.Application.EscapeRoomReview
 {
     public class EscapeRoomReviewDto
     {
+        public string? Id { get; set; }
         public string ReviewerName { get; set; } = default!;
         public string? Review { get; set; }
         public StarRating StarRating { get; set; }
