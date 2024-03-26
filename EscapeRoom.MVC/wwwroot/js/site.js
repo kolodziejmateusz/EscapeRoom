@@ -13,7 +13,6 @@
                 <div class="card-header">${review.reviewerName}</div>
                  <div class="card-body">
                      <h6 class="card-title">${review.review}</h6> 
-                     <h6 class="card-title">${review.id}</h6> 
                  </div>
                   <div class="card-footer">
                      ${stars}
