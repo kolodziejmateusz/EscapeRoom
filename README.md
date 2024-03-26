@@ -18,20 +18,21 @@ Poniżej znajduje się prezentacja kilku kluczowych funkcjonalności:
 ## 2. Szczegóły i Recenzje:
 ![png](./.github/images/recenzje.png)
 
-## 3. Dodawanie Recenzji:
+## 3. Dodawanie Recenzji - wyskakujący formularz z walidacją:
 ![gif](./.github/images/dodawanierecenzji.gif)
 
 ## 4. Brak uprawnień:
-Użytkownik nie ma przycisków do funkcji do których nie jest uprawniony 
+Użytkownik nie ma przycisków do funkcji do których nie jest uprawniony.
+
 ![gif](./.github/images/brakuprawnien.gif)
 
-## 5. Dodawanie Escape Roomu:
+## 5. Dodawanie Escape Roomu - formularz z walidacją:
 ![gif](./.github/images/dodawanie.gif)
 
 ## 5. Edycja Escape Roomu:
 ![gif](./.github/images/edycja.gif)
 
-## 6. Usuwanie Escape Roomu:
+## 6. Usuwanie Escape Roomu z okienkiem potwierdzenia:
 ![gif](./.github/images/usuwanie.gif)
 
 ## 7. Usuwanie Recenzji:
@@ -52,58 +53,3 @@ W Projekcie użyłem między innymi:
 
 Aplikacja realizowana z pomocą kursu.
 Zdjęcia w aplikacji webowej są generowane losowo z puli grafik, w przyszłości w ich miejsce można zaimplementować zdjęcia przesyłane z formularza.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Escape Room
-### Miło mi Cię widzieć na stronie projektu mojej aplikacji webowej w ASP.NET MVC (model-view-controller).
-
-# [DEMO - kliknij aby przetestować aplikacje.](https://escaperoom.bsite.net/)
-
-
-Na początku chciałbym podkreślić, że projekt jest cały czas w fazie rozwoju i mam nadzieję z czasem dodawać tu nowe funkcje :D.
-
-Aplikacja służy do ogłaszania ofert firm zajmujących się prowadzeniem Escape Roomów. Użytkownik za jej pomocą może dodawać, edytować, wyświetlać szczegóły i przeglądać ofertę Escape Roomów w swojej okolicy.
-
-## 1. Widok główny na którym można przeglądać aktualne oferty:
-![gif](./.github/images/gif1.gif)
-
-## 2. Tworzenie Escape Room - Formularz z walidacją wpisywanych danych:
-
-![gif](./.github/images/gif2.gif)
-
-##  3. Szczegóły danego escape roomu:
-
-![gif](./.github/images/gif3.gif)
-
-## 4. Edycja Escape Room
-
-![gif](./.github/images/gif4.gif)
-
-
-W Projekcie użyłem między innymi:
-* ASP.NET Core MVC
-* Entity FrameWork
-* baza danych MS SQL
-* clean architecture
-* CQRS i MediatR
-* automapper
-
-Aplikacja realizowana z pomocą kursu i podczas kursu.
-Zdjęcia w aplikacji webowej są generowane losowo z puli grafik, w przyszłości w ich miejsce można zaimplemoetować zdjęcia przesyłąne z formularza.
-
