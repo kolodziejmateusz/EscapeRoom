@@ -15,7 +15,6 @@ namespace EscapeRoom.Application.EscapeRoomReview.Commands.CreateEscapeRoomRevie
             RuleFor(s => s.Review).NotEmpty().NotNull().WithMessage("Recenzja jest wymagana.");
             RuleFor(s => s.StarRating).NotEmpty().NotNull().WithMessage("Ilość gwiazdek jest wymagana.");
             RuleFor(s => s.EscapeRoomEncodedName).NotEmpty().NotNull();
-
         }
     }
 }

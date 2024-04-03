@@ -38,7 +38,7 @@ namespace EscapeRoom.Application.EscapeRoomReview.Commands.CreateEscapeRoomRevie
                 ReviewerName = request.ReviewerName,
                 Review = request.Review,
                 StarRating = request.StarRating,
-                CreatedById = user.Id,
+                CreatedById = user!.Id,
                 EscapeRoomId = escapeRoom.Id
             };
 
