@@ -41,7 +41,7 @@ namespace EscapeRoom.Application.EscapeRoomReview.Commands.CreateEscapeRoomRevie
                 ReviewerName = "",
                 Review = "",
                 StarRating = Domain.Entities.StarRating.FourStars,
-                EscapeRoomEncodedName = null
+                EscapeRoomEncodedName = null!
             };
 
             // act
